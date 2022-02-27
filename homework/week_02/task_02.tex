@@ -1,0 +1,207 @@
+\documentclass[a4paper,14pt]{article} % тип документа
+%\documentclass[14pt]{extreport}
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+
+\usepackage{geometry} % Простой способ задавать поля
+\geometry{top=25mm}
+\geometry{bottom=35mm}
+\geometry{left=20mm}
+\geometry{right=20mm}
+
+\setcounter{section}{0}
+
+%%%Библиотеки
+%\usepackage[warn]{mathtext}
+%\usepackage[T2A]{fontenc} % кодировка
+\usepackage[utf8]{inputenc} % кодировка исходного текста
+\usepackage[english,russian]{babel} % локализация и переносы
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{wasysym}
+\usepackage{graphicx}%Вставка картинок правильная
+\usepackage{float}%"Плавающие" картинки
+\usepackage{wrapfig}%Обтекание фигур (таблиц, картинок и прочего)
+\usepackage{fancyhdr} %загрузим пакет
+\usepackage{lscape}
+\usepackage{xcolor}
+\usepackage{dsfont}
+%\usepackage{indentfirst}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+
+
+
+
+%%% DRAGON STUFF
+\usepackage{scalerel}
+\usepackage{mathtools}
+
+\DeclareMathOperator*{\myint}{\ThisStyle{\rotatebox{25}{$\SavedStyle\!\int\!\!\!$}}}
+
+\DeclareMathOperator*{\myoint}{\ThisStyle{\rotatebox{25}{$\SavedStyle\!\oint\!\!\!$}}}
+
+\usepackage{scalerel}
+\usepackage{graphicx}
+%%% END 
+
+%%%Конец библиотек
+
+%%%Настройка ссылок
+\hypersetup
+{
+colorlinks=true,
+linkcolor=blue,
+filecolor=magenta,
+urlcolor=blue
+}
+%%%Конец настройки ссылок
+
+
+%%%Настройка колонтитулы
+	\pagestyle{fancy}
+	\fancyhead{}
+	\fancyhead[L]{Домашнее задание}
+	\fancyhead[R]{Крейнин Матвей, группа Б05-005}
+	\fancyfoot{}
+    \fancyfoot[C]{\thepage}
+    \fancyfoot[R]{Основные алгоритмы}
+%%%конец настройки колонтитулы
+
+
+
+\begin{document}
+%%%%Начало документа%%%%
+
+\section{Задание 2}
+
+\subsection{Задача 1}
+\textbf{а)} $238 \cdot x + 385 \cdot y = 133$
+
+Будем искать НОД(238, 235), используя алгоритм Евклида.
+\begin{equation*}
+gcd(238, 385) = gcd(147, 238) = gcd(91, 147) = gcd(56, 91) = gcd(35, 56) = \rightarrowtail
+\end{equation*}
+
+\begin{equation*}
+	= gcd(21, 35) = gcd(14, 21) = gcd(7, 14) = gcd(0, 7) = 7
+\end{equation*}
+НОД(385, 238)$ = 7$. $133 / 7 = 19$, поэтому решения будут.
+
+Теперь используем расширенный алгоритм Евклида:
+
+\begin{table}[H]
+	\begin{tabular}{|l|l|l|}
+	\hline
+	x   & y  & 238x+385y \\ \hline
+	0   & 1  & 385       \\ \hline
+	1   & 0  & 238       \\ \hline
+	-1  & 1  & 147       \\ \hline
+	2   & -1 & 91        \\ \hline
+	-3  & 2  & 56        \\ \hline
+	5   & -3 & 35        \\ \hline
+	-8  & 5  & 21        \\ \hline
+	13  & -8 & 14        \\ \hline
+	-21 & 13 & 7         \\ \hline
+	\end{tabular}
+\end{table}
+
+Тогда решениями будут $x = -21 \cdot \frac{133}{7}, y = 13 \cdot \frac{133}{7}$; $x = -399, y = 247$
+
+
+$x = -399 - k \cdot \frac{385}{\text{НОД(238, 385)}}, y = 247 + k \cdot \frac{238}{\text{НОД(238, 385)}}, k \in \mathds{Z}$
+
+
+\underline{\textbf{Ответ:}} $x = -399 - 55 \cdot k, y = 247 + 34 \cdot k, k \in \mathds{Z}$
+\newline
+\textbf{б)} $143 \cdot x + 121 \cdot y = 52$
+
+Будем искать НОД(143, 21): 
+\begin{equation*}
+gcd(143, 121) = gcd(121, 22) = gcd(22, 11) = gcd(11, 0) = 11
+\end{equation*}
+Но 52 не делится на 11, поэтому решений нет.
+
+
+\underline{\textbf{Ответ:}} $\emptyset$
+
+
+\subsection{Задача 2}
+$68x + 85 = 0 mod 561$, или же если переписать $561 \cdot y - 65 \cdot x = 85$
+
+Используем алгоритм Евклида, чтобы найти НОД(561, 68): $gcd(561, 68) = gcd(68, 17) = gcd(17, 0)$
+
+НОД(561, 68) $= 17$,  причем 85 mod $17 = 0$, значит решения есть.
+
+Используем расширенный алгоритм Евклида.
+
+\begin{table}[H]
+	\begin{tabular}{|l|l|l|}
+	\hline
+	x  & y & 238x+385y \\ \hline
+	0  & 1 & 385       \\ \hline
+	1  & 0 & 238       \\ \hline
+	-1 & 1 & 147       \\ \hline
+	\end{tabular}
+\end{table}
+
+Т.е. решения: $x = 8 \cdot \frac{85}{17} = 40, y = 1 \cdot \frac{85}{17} = 5$
+
+
+$x = 40 - k \cdot \frac{561}{\text{НОД(561, 68)}} = 40 - 33 \cdot k, y = 5 + k \cdot \frac{-68}{\text{НОД(561, 68)}} = 5 - 4 \cdot k, k \in \mathds{Z}$
+
+\underline{\textbf{Ответ:}} $x = 40 - 33 \cdot k, y = 5 - 4 \cdot k, k \in [0; 16]$
+
+\subsection{Задача 3}
+Вычислить $7^{13} mod 167$, используя алгоритм быстрого возведения в степень.
+Условимся, что '$=$' обозначает по остатку 167 и каждый раз писать mod 167 я не буду.
+
+\begin{equation*}
+	7^{13} = 7 \cdot (7^6)^2 = 7 \cdot ((7^3)^2)^2 = 7 \cdot ((7 \cdot (7 \cdot 7))^2)^2 = 7 \cdot ((9)^2)^2 = 7 \cdot 48 = 2	
+\end{equation*}
+
+
+\underline{\textbf{Ответ:}} 2.
+
+\subsection{Задача 4}
+
+
+\underline{\textbf{Ответ:}}
+
+\subsection{Задача 5}
+\textbf{1)} Найти асимтотику роста функции $T_1(n) = T_1(n-1) + cn$, (при $n > 3$)
+\begin{equation*}
+	T_1(n) = T_1(n-1) + c \cdot n = T_1(n-2) + c \cdot (n - 1) + c \cdot n = ... = T_1(3) + c \cdot (4 + ... + n)
+\end{equation*}
+
+\begin{equation*}
+	T_1(n) = 1 + c \cdot (\frac{1+n}{2} \cdot n - 6)
+\end{equation*}
+
+Следовательно $T_1(n) = \Theta(n^2)$
+\newline
+\textbf{2)}
+Из курса Дискретного анализа можем записать хар. многочлен: $\lambda^3 = \lambda^2 + 4$, теперь угадаем корень $\lambda_1 = 2$
+
+$(\lambda -2) \cdot (\lambda^2 + \lambda +2) = 0$ $\rightarrow$ $\lambda = \{ \frac{-1 + \pm \sqrt{7}i}{2}$
+
+Тогда получим: 
+\begin{equation*}
+	T_2(n) = A \cdot 2^n + B \cdot ( (\frac{-1-7\sqrt{7}i}{2})^n + (\frac{-1-7\sqrt{7}i}{2})^n))
+\end{equation*}
+
+\begin{equation*}
+	T_2(n) = A \cdot 2^n + B \cdot 2^{n/2} \cdot (\frac{-1-7\sqrt{7}i}{2 \sqrt{2}})^n + \frac{-1+7\sqrt{7}i}{2 \sqrt{2}})^n) 	
+\end{equation*}
+
+
+Следовательно $log(T_2(n)) = \Theta(n)$ ч.т.д.
+\newline
+\textbf{3)} Из прошлого пункта получим ответ.
+
+\underline{\textbf{Ответ:}}
+$T_2(n) = A \cdot 2^n + B \cdot 2^{n/2}$
+
+
+\end{document}
