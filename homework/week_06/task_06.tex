@@ -1,0 +1,145 @@
+\documentclass[a4paper,14pt]{article} % тип документа
+%\documentclass[14pt]{extreport}
+\usepackage{extsizes} % Возможность сделать 14-й шрифт
+
+
+\usepackage{geometry} % Простой способ задавать поля
+\geometry{top=25mm}
+\geometry{bottom=35mm}
+\geometry{left=20mm}
+\geometry{right=20mm}
+
+\setcounter{section}{0}
+
+%%%Библиотеки
+%\usepackage[warn]{mathtext}
+%\usepackage[T2A]{fontenc} % кодировка
+\usepackage[utf8]{inputenc} % кодировка исходного текста
+\usepackage[english,russian]{babel} % локализация и переносы
+\usepackage{caption}
+\usepackage{listings}
+\usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools}
+\usepackage{wasysym}
+\usepackage{graphicx}%Вставка картинок правильная
+\usepackage{float}%"Плавающие" картинки
+\usepackage{wrapfig}%Обтекание фигур (таблиц, картинок и прочего)
+\usepackage{fancyhdr} %загрузим пакет
+\usepackage{lscape}
+\usepackage{xcolor}
+\usepackage{dsfont}
+%\usepackage{indentfirst}
+\usepackage[normalem]{ulem}
+\usepackage{hyperref}
+
+
+
+
+%%% DRAGON STUFF
+\usepackage{scalerel}
+\usepackage{mathtools}
+
+\DeclareMathOperator*{\myint}{\ThisStyle{\rotatebox{25}{$\SavedStyle\!\int\!\!\!$}}}
+
+\DeclareMathOperator*{\myoint}{\ThisStyle{\rotatebox{25}{$\SavedStyle\!\oint\!\!\!$}}}
+
+\usepackage{scalerel}
+\usepackage{graphicx}
+%%% END 
+
+%%%Конец библиотек
+
+%%%Настройка ссылок
+\hypersetup
+{
+colorlinks=true,
+linkcolor=blue,
+filecolor=magenta,
+urlcolor=blue
+}
+%%%Конец настройки ссылок
+
+
+%%%Настройка колонтитулы
+	\pagestyle{fancy}
+	\fancyhead{}
+	\fancyhead[L]{Домашнее задание}
+	\fancyhead[R]{Крейнин Матвей, группа Б05-005}
+	\fancyfoot{}
+    \fancyfoot[C]{\thepage}
+    \fancyfoot[R]{Основные алгоритмы}
+%%%конец настройки колонтитулы
+
+
+
+\begin{document}
+%%%%Начало документа%%%%
+
+\section{Задание 6}
+
+\subsection{Задача 1}
+$
+	\mathds{E}(X) = \left( \frac{5}{6} \right)^3 \cdot (-100) 
+	+ 3 \cdot \frac{1}{6} \cdot \left(\frac{5}{6} \right)^2 \cdot (100) 
+	+ 3 \cdot \left( \frac{1}{6} \right)^2 \cdot \frac{5}{6} \cdot (200) + 
+$
+\newline
+$
+	+ \left( \frac{1}{6} \right)^3 \cdot 300
+$
+
+Первое это не выпало нужное число, второе это выпало только один раз нужное число, второе это выпало два раза нужное число, и третье выпало три раза нужное чиисло.
+Перемножать вероятности можем, т.к. то что выпало на каждом отдельном кубике это независимое событие.
+
+\underline{\textbf{Ответ: }} $\mathds{E}(X) = \frac{-1700}{6^3} = -7\frac{47}{54}$.
+
+\subsection{Задача 2}
+Пусть в лотерее участвовало всего n человек, тогда 
+\newline $M = 0.4 \cdot 100 \cdot n$ -- максимальный выигрыш.
+Пусть y человек выиграло в лотерею 5 тысяч или больше. $T = 5000 \cdot y$ -- количество денег, которые выиграли эти люди.
+\newline Но по условия задачи T не превышает M, запишем это. 
+\newline $T = 5000 \cdot y \leq M = 0.4 \cdot 100 \cdot n$, учитывая, что $p = \frac{y}{n}$ -- вероятность выиграть 5 тысяч или больше.
+
+Получим, что $\frac{y}{n} = p \leq \frac{0.4 * 100}{5000} = 0.008 \leq 10^{-3}$
+
+\underline{\textbf{Доказано}}
+
+\subsection{Задача 3}
+Будем смотреть на слово длины 20, у которого будет выделенное вхождение подслова ab. Это подслово мы можем расположить на 19 местах в нашем слове.
+После этого мы можем дописать 18 букв с разных сторон. Т.е. получим всего: $19 \cdot 2^{18}$ вариантов.
+\newline
+Теперь поделим на количество всех слов длины 20 ($2^{20})$, и получим 
+\newline
+$\mathds{E}(X) = \frac{19 \cdot 2^{18}}{2^{20}} = 19 / 4 = 4.75$. 
+
+\underline{\textbf{Ответ:}} $\mathds{E}(X) = 4.75$
+\newpage
+\subsection{Задача 4}
+Всего у нас $n!$ перестановок, тогда вероятность каждой отдельной перестановки $\mathds{P} = \frac{1}{n!}$.
+Рассмотрим некоторую перестановку и перестановку обратную ей, найдем количество инверсий в этих двух перестановках.
+Будем рассматривать все пары $1 \leq i < j \leq n$, всего их будет $\frac{n(n-1)}{2}$. Эти пары будут образовывать инверсию либо в перестановке, либо в перевернутой ей.
+\newline
+(Если j стоит раньше i в обычной перестановке, то j будет стоять после i и уже не будет давать инверсию в обратной перестановке. Аналогично, если j стоит раньше i в обратной перестановке.)
+Всего же таких пар из обычной и перевернутой перестановки будет: $\frac{n!}{2}$.
+Получаем: $\mathds{E}(X) = \frac{1}{n!} \cdot \frac{n!}{2} \cdot \frac{n(n-1)}{2} = \frac{n(n-1)}{4}$
+
+\underline{\textbf{Ответ: }} $\mathds{E}(X) = \frac{n(n-1)}{4}$
+
+
+\subsection{Задача 5}
+Пусть у нас k элементов стоятт на своих местах не переставленные, тогда вероятность того, что k элементов не переставят будет равна:
+$\mathds{E}(p_k) = \frac{C_n^k \cdot (n-k)!}{n!}$, теперь найдем мат. ожидание.
+\newline
+$\mathds{E}(X) = \sum\limits_{k = 0}^n k \cdot \frac{C_n^k \cdot (n-k)!}{n!} = \sum\limits_{k = 0}^n k \cdot \frac{n!\cdot(n-k)!}{k! \cdot (n-k)! \cdot n!} = \sum\limits_{k = 0}^n \frac{k}{k!}$
+
+\underline{\textbf{Ответ:}} $\mathds{E}(X) = \sum\limits_{k = 0}^n \frac{k}{k!}$
+
+\subsection{Задача 6}
+Предположим, что это не так и $\mathds{P}[X \geq 6] \geq \frac{1}{10}$.
+\newline
+Тогда, $\mathds{E}[2^X] = 5 \geq \frac{1}{10} \cdot 2^6 + Y = 6.4 + Y$, но Y неотрицательная, т.к. отрицательных вероятностей у нас нет, а $2^X$ -- положительная функция.
+\newline 
+Следовательно наше предположение неверное и $\mathds{P}[X \geq 6] < \frac{1}{10}.$
+
+\underline{\textbf{Доказано}}
+
+\end{document} 
