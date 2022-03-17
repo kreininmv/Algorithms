@@ -124,12 +124,15 @@ $\mathds{E}(X) = \frac{19 \cdot 2^{18}}{2^{20}} = 19 / 4 = 4.75$.
 
 
 \subsection{Задача 5}
-Пусть у нас k элементов стоятт на своих местах не переставленные, тогда вероятность того, что k элементов не переставят будет равна:
-$\mathds{E}(p_k) = \frac{C_n^k \cdot (n-k)!}{n!}$, теперь найдем мат. ожидание.
+Введём индикатор события $\mathds{1}_i$ $x_i = i$, он будет принимать значение 1, если входящая перестановка будет удовлетворять условию, в остальных случаях 0.
+Тогда вероятность такого события будет $p_k = \frac{(n-1)!}{n!} = \frac{1}{n}$. 
 \newline
-$\mathds{E}(X) = \sum\limits_{k = 0}^n k \cdot \frac{C_n^k \cdot (n-k)!}{n!} = \sum\limits_{k = 0}^n k \cdot \frac{n!\cdot(n-k)!}{k! \cdot (n-k)! \cdot n!} = \sum\limits_{k = 0}^n \frac{k}{k!}$
+Таким образом, $X = \sum\limits_{i = 1}^n \mathds{1}_i$.
+\begin{equation*}
+	\mathds{E}(X) = \sum\limits_{i = 1}^n \mathds{E}(\mathds{1}_i) = n \cdot \frac{1}{n} = 1
+\end{equation*}
 
-\underline{\textbf{Ответ:}} $\mathds{E}(X) = \sum\limits_{k = 0}^n \frac{k}{k!}$
+\underline{\textbf{Ответ:}} $\mathds{E}(X) = 1$
 
 \subsection{Задача 6}
 Предположим, что это не так и $\mathds{P}[X \geq 6] \geq \frac{1}{10}$.
